@@ -1,0 +1,2 @@
+# AnalizatorSudoku
+AnalizatorSudoku
