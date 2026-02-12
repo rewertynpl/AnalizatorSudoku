@@ -1,2 +1,38 @@
 # AnalizatorSudoku
-AnalizatorSudoku
+Status implementacji technik:
+- Naked Single: ZAIMPLEMENTOWANE
+- Hidden Single: ZAIMPLEMENTOWANE
+- Naked Pair: ZAIMPLEMENTOWANE
+- Hidden Pair: ZAIMPLEMENTOWANE
+- Intersection Removal (Pointing Pairs/Triples): ZAIMPLEMENTOWANE
+- Intersection Removal (Box/Line Reduction): ZAIMPLEMENTOWANE
+- Naked Triple: ZAIMPLEMENTOWANE
+- Hidden Triple: ZAIMPLEMENTOWANE
+- Naked Quad: ZAIMPLEMENTOWANE
+- Hidden Quad: ZAIMPLEMENTOWANE
+- X-Wing: ZAIMPLEMENTOWANE
+- Y-Wing (XY-Wing): ZAIMPLEMENTOWANE
+- XYZ-Wing: ZAIMPLEMENTOWANE
+- Swordfish: ZAIMPLEMENTOWANE
+- Jellyfish: ZAIMPLEMENTOWANE
+- Skyscraper: ZAIMPLEMENTOWANE
+- 2-String Kite: ZAIMPLEMENTOWANE
+- Simple Coloring: ZAIMPLEMENTOWANE
+- 3D Medusa: ZAIMPLEMENTOWANE
+- Finned X-Wing / Sashimi X-Wing: CZESCIOWO (finned core)
+- Empty Rectangle: ZAIMPLEMENTOWANE
+- Unique Rectangle: ZAIMPLEMENTOWANE (Type 1-6, wariant konserwatywny)
+- Avoidable Rectangle: ZAIMPLEMENTOWANE
+- BUG+1: ZAIMPLEMENTOWANE
+- Remote Pairs: ZAIMPLEMENTOWANE
+- W-Wing: ZAIMPLEMENTOWANE
+- Grouped X-Cycle: ZAIMPLEMENTOWANE
+- X-Chain: ZAIMPLEMENTOWANE
+- XY-Chain: ZAIMPLEMENTOWANE
+- Grouped AIC: ZAIMPLEMENTOWANE
+- AIC (Alternating Inference Chains): ZAIMPLEMENTOWANE
+- ALS (Rule XZ): ZAIMPLEMENTOWANE
+- Sue de Coq: ZAIMPLEMENTOWANE
+- Exocet: ZAIMPLEMENTOWANE
+- Forcing Chains: ZAIMPLEMENTOWANE
+- Backtracking: ZAIMPLEMENTOWANE
