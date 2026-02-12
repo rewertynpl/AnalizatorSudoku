@@ -13,15 +13,22 @@ Status implementacji technik:
 - X-Wing: ZAIMPLEMENTOWANE
 - Y-Wing (XY-Wing): ZAIMPLEMENTOWANE
 - XYZ-Wing: ZAIMPLEMENTOWANE
+- WXYZ-Wing: ZAIMPLEMENTOWANE
 - Swordfish: ZAIMPLEMENTOWANE
 - Jellyfish: ZAIMPLEMENTOWANE
+- Franken / Mutant Fish: ZAIMPLEMENTOWANE
+- Kraken Fish: ZAIMPLEMENTOWANE
 - Skyscraper: ZAIMPLEMENTOWANE
 - 2-String Kite: ZAIMPLEMENTOWANE
 - Simple Coloring: ZAIMPLEMENTOWANE
 - 3D Medusa: ZAIMPLEMENTOWANE
 - Finned X-Wing / Sashimi X-Wing: CZESCIOWO (finned core)
+- Finned Swordfish: CZESCIOWO (finned fish, konserwatywne)
+- Finned Jellyfish: CZESCIOWO (finned fish, konserwatywne)
 - Empty Rectangle: ZAIMPLEMENTOWANE
-- Unique Rectangle: ZAIMPLEMENTOWANE (Type 1-6, wariant konserwatywny)
+- Unique Rectangle: ZAIMPLEMENTOWANE (Type 1/2/3/4/5/6 + Hidden UR, konserwatywne)
+- Unique Loop (6+): ZAIMPLEMENTOWANE (konserwatywne, single-extra)
+- Bivalue Oddagon: ZAIMPLEMENTOWANE (konserwatywne, single-extra)
 - Avoidable Rectangle: ZAIMPLEMENTOWANE
 - BUG+1: ZAIMPLEMENTOWANE
 - Remote Pairs: ZAIMPLEMENTOWANE
@@ -29,10 +36,19 @@ Status implementacji technik:
 - Grouped X-Cycle: ZAIMPLEMENTOWANE
 - X-Chain: ZAIMPLEMENTOWANE
 - XY-Chain: ZAIMPLEMENTOWANE
-- Grouped AIC: ZAIMPLEMENTOWANE
+- Grouped AIC: ZAIMPLEMENTOWANE (implikacyjne, bez backtrackingu)
 - AIC (Alternating Inference Chains): ZAIMPLEMENTOWANE
+- Continuous Nice Loop: ZAIMPLEMENTOWANE
 - ALS (Rule XZ): ZAIMPLEMENTOWANE
+- ALS-XY-Wing: ZAIMPLEMENTOWANE
+- ALS-Chain: ZAIMPLEMENTOWANE
+- Death Blossom: ZAIMPLEMENTOWANE
 - Sue de Coq: ZAIMPLEMENTOWANE
-- Exocet: ZAIMPLEMENTOWANE
-- Forcing Chains: ZAIMPLEMENTOWANE
+- MSLS (Multi-Sector Locked Sets): ZAIMPLEMENTOWANE
+- Exocet: CZESCIOWO (target-check, bez backtrackingu)
+- Senior Exocet: ZAIMPLEMENTOWANE
+- SK Loop: ZAIMPLEMENTOWANE
+- Pattern Overlay Method: ZAIMPLEMENTOWANE
+- Forcing Chains: ZAIMPLEMENTOWANE (implikacyjne, bez backtrackingu)
 - Backtracking: ZAIMPLEMENTOWANE
+
