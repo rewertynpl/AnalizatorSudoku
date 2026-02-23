@@ -397,7 +397,7 @@ static std::string strategyImplementationStatus(Strategy s) {
 class SudokuAnalyzer {
 public:
     explicit SudokuAnalyzer(const SudokuBoard& b);
-    AnalysisReport run();
+    AnalysisReport run(int logical_max_rank = 8, bool enable_backtracking = true);
 
 private:
     const SudokuBoard& b_;
@@ -486,7 +486,7 @@ private:
     bool applyGroupedXCycle(int& n);
     bool applyGroupedAIC(int& n);
     bool applyThreeDMedusa(int& n);
-    void logicalSolve();
+    void logicalSolve(int max_rank);
     bool isPeerCell(int a, int b) const;
     std::string cellName(int idx) const;
     void pushDebugLog(const std::string& line);
@@ -5013,8 +5013,12 @@ bool SudokuAnalyzer::applyThreeDMedusa(int& n) {
     return false;
 }
 
-void SudokuAnalyzer::logicalSolve() {
+void SudokuAnalyzer::logicalSolve(int max_rank) {
+    if (max_rank < 1) max_rank = 1;
+    if (max_rank > 8) max_rank = 8;
+
     auto tryStep = [&](Strategy s, auto&& fn, int& n) -> bool {
+        if (strategyRank(s) > max_rank) return false;
         current_strategy_ = s;
         return fn(n);
     };
@@ -5084,7 +5088,7 @@ void SudokuAnalyzer::logicalSolve() {
     }
 }
 
-AnalysisReport SudokuAnalyzer::run() {
+AnalysisReport SudokuAnalyzer::run(int logical_max_rank, bool enable_backtracking) {
     AnalysisReport r;
     debug_logic_logs_.clear();
     debug_logic_truncated_ = false;
@@ -5093,7 +5097,7 @@ AnalysisReport SudokuAnalyzer::run() {
     r.initial_clues = cluesCount();
     r.solver_input_grid = grid_;
     in_logical_phase_ = true;
-    if (!contradiction_) logicalSolve();
+    if (!contradiction_) logicalSolve(logical_max_rank);
     in_logical_phase_ = false;
     r.contradiction = contradiction_;
     r.solved_logically = (!contradiction_ && solved());
@@ -5101,7 +5105,7 @@ AnalysisReport SudokuAnalyzer::run() {
         r.solved_grid = grid_;
     }
 
-    if (!r.contradiction && !r.solved_logically) {
+    if (enable_backtracking && !r.contradiction && !r.solved_logically) {
         const BacktrackingSolveStats bt = solveWithBacktracking(b_, grid_);
         r.solved_with_backtracking = bt.solved;
         r.backtracking_nodes = bt.nodes;
@@ -5751,8 +5755,34 @@ static PuzzleResult analyzePuzzleTask(const PuzzleTask& task) {
             return result;
         }
 
-        SudokuAnalyzer analyzer(board);
-        AnalysisReport report = analyzer.run();
+        constexpr int kMaxLogicalRank = 8;
+        AnalysisReport report;
+        bool haveReport = false;
+
+        for (int cap = 1; cap <= kMaxLogicalRank; ++cap) {
+            SudokuAnalyzer analyzer(board);
+            AnalysisReport candidate = analyzer.run(cap, false);
+            haveReport = true;
+
+            if (candidate.contradiction) {
+                report = std::move(candidate);
+                break;
+            }
+            if (candidate.solved_logically) {
+                report = std::move(candidate);
+                break;
+            }
+
+            if (cap == kMaxLogicalRank) {
+                report = std::move(candidate);
+            }
+        }
+
+        if (haveReport && !report.contradiction && !report.solved_logically) {
+            SudokuAnalyzer analyzer(board);
+            report = analyzer.run(kMaxLogicalRank, true);
+        }
+
         report.solution_count = countSolutionsWithBacktracking(board, 2);
         report.unique_solution = (report.solution_count == 1);
 
